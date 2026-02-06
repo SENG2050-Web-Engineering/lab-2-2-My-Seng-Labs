@@ -34,9 +34,21 @@ public class Main {
 
     // Add a servlet
     tomcat.addServlet("", "HelloWorldServlet", new HelloWorldServlet());
+        // Add a servlet for HTML gen
+    tomcat.addServlet("", "generateValidHTML", new generateValidHTML());
+        // Add and map the servlet
+    tomcat.addServlet("", "SimpleMessage", new SimpleMessage());
     
     // Map the servlet
     ctx.addServletMappingDecoded("/HelloWorld", "HelloWorldServlet");
+
+    // Map the servlet for HTML gen
+    ctx.addServletMappingDecoded("/generateValidHTML", "generateValidHTML");
+
+
+    ctx.addServletMappingDecoded("/SimpleMessage", "SimpleMessage");
+
+
 
     // Start Tomcat
     try {
@@ -47,5 +59,8 @@ public class Main {
     } catch (LifecycleException e) {
       e.printStackTrace();
     }
+   
   }
 }
+
+
